@@ -5,8 +5,28 @@ import { motion, AnimatePresence } from "framer-motion";
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const servicesItems = [
+    { title: "Integrated Facility Management Services", href: "#" },
+    { title: "Staffing Solutions And Payroll Management", href: "#" },
+    { title: "Private Security And Manned Guarding", href: "#" },
+    { title: "Catering", href: "#" },
+    { title: "Waste Management Services", href: "#" },
+    { title: "Other Services", href: "#" },
+  ];
+
+  const sectorsItems = [
+    { title: "Hospitals and Healthcare", href: "#" },
+    { title: "Education", href: "#" },
+    { title: "Banking and Financial Services", href: "#" },
+    { title: "Public Administration", href: "#" },
+    { title: "Airport Railways & Metro Infrastructure", href: "#" },
+    { title: "Industrial", href: "#" },
+    { title: "Retail", href: "#" },
+    { title: "Other Sectors", href: "#" },
+  ];
+
   return (
-    <nav className="fixed w-full top-0 left-0 z-50 bg-[#006894] text-white shadow-lg">
+    <nav className="fixed w-full top-0 left-0 z-50 bg-[#006894] text-white shadow-lg font-sans">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
         <div className="flex justify-between items-center h-[90px]">
           <div className="flex-shrink-0 flex items-center cursor-pointer gap-3">
@@ -32,14 +52,26 @@ const Navbar = () => {
             </span>
           </div>
 
-          <div className="hidden xl:flex items-center space-x-8">
+          <div className="hidden xl:flex items-center space-x-8 h-full">
             <NavLink href="#">About Us</NavLink>
-            <DropdownLink href="#" title="Services" />
-            <DropdownLink href="#" title="Sectors" />
+
+            <DropdownLink 
+              href="#" 
+              title="Services" 
+              items={servicesItems} 
+            />
+
+            <DropdownLink 
+              href="#" 
+              title="Sectors" 
+              items={sectorsItems} 
+            />
+
             <NavLink href="#">Investors</NavLink>
             <NavLink href="#">CSR</NavLink>
             <NavLink href="#">Blogs</NavLink>
             <NavLink href="#">Careers</NavLink>
+            
             <div className="ml-6">
               <a
                 href="#"
@@ -92,29 +124,65 @@ const Navbar = () => {
 };
 
 const NavLink = ({ href, children }) => (
-  <a
-    href={href}
-    className="text-white hover:text-[#FFC20E] px-1 py-2 text-[17px] font-medium transition-colors"
-  >
-    {children}
-  </a>
-);
-
-const DropdownLink = ({ href, title }) => (
-  <div className="relative group flex items-center cursor-pointer h-full">
+  <div className="flex items-center h-full">
     <a
       href={href}
-      className="text-white group-hover:text-[#FFC20E] px-1 py-2 text-[17px] font-medium transition-colors flex items-center gap-1.5"
+      className="text-white hover:text-[#FFC20E] px-1 py-2 text-[17px] font-medium transition-colors"
     >
-      {title}
-      <ChevronDown
-        size={16}
-        strokeWidth={2.5}
-        className="mt-0.5 group-hover:rotate-180 transition-transform duration-200"
-      />
+      {children}
     </a>
   </div>
 );
+
+const DropdownLink = ({ href, title, items }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div 
+      className="relative group flex items-center h-full"
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+      onClick={() => setIsOpen(!isOpen)}
+    >
+      <a
+        href={href}
+        className={`text-white px-1 py-2 text-[17px] font-medium transition-colors flex items-center gap-1.5 ${
+          isOpen ? 'text-[#29abe2]' : 'group-hover:text-[#FFC20E]'
+        }`}
+      >
+        {title}
+        <ChevronDown
+          size={16}
+          strokeWidth={2.5}
+          className={`mt-0.5 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+        />
+      </a>
+
+      {items && (
+        <div 
+          className={`absolute left-0 w-max min-w-[360px] bg-[#120d3a] shadow-2xl transition-all duration-200 ease-in-out origin-top-left z-50 ${
+            isOpen 
+              ? 'opacity-100 translate-y-0 visible' 
+              : 'opacity-0 translate-y-2 invisible'
+          }`}
+          style={{ top: "100%" }}
+        >
+          <div className="flex flex-col py-4">
+            {items.map((item, index) => (
+              <a
+                key={index}
+                href={item.href}
+                className="text-white hover:text-[#29abe2] px-8 py-3 text-[15px] font-normal transition-colors border-l-4 border-transparent hover:border-[#29abe2] block"
+              >
+                {item.title}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
 
 const MobileNavLink = ({ href, children, hasDropdown }) => (
   <a

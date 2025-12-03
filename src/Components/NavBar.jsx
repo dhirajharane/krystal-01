@@ -29,7 +29,7 @@ const Navbar = () => {
     <nav className="fixed w-full top-0 left-0 z-50 bg-[#000000] text-white shadow-lg font-sans">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
         <div className="flex justify-between items-center h-[90px]">
-          {/* Logo Section */}
+          
           <div className="flex-shrink-0 flex items-center cursor-pointer gap-3">
             <div className="relative w-12 h-12">
               <svg
@@ -79,7 +79,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Mobile Menu Toggle Button */}
+          
           <div className="flex items-center xl:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -91,7 +91,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Container */}
+      }
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -103,7 +103,7 @@ const Navbar = () => {
             <div className="px-4 pt-4 pb-6 space-y-2">
               <MobileNavLink href="#">About Us</MobileNavLink>
               
-              {/* Expandable Mobile Dropdowns */}
+              
               <MobileDropdown title="Services" items={servicesItems} />
               <MobileDropdown title="Sectors" items={sectorsItems} />
               
@@ -128,7 +128,7 @@ const Navbar = () => {
   );
 };
 
-// --- Desktop Components (Unchanged) ---
+
 
 const NavLink = ({ href, children }) => (
   <div className="flex items-center h-full">
@@ -193,7 +193,7 @@ const DropdownLink = ({ href, title, items }) => {
   );
 };
 
-// --- Mobile Components ---
+
 
 const MobileNavLink = ({ href, children }) => (
   <a
@@ -204,7 +204,7 @@ const MobileNavLink = ({ href, children }) => (
   </a>
 );
 
-// New Component: Handles the Accordion style dropdown in Mobile
+
 const MobileDropdown = ({ title, items }) => {
   const [isOpen, setIsOpen] = useState(false);
 

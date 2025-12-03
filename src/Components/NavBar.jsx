@@ -96,15 +96,12 @@ const Navbar = () => {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="xl:hidden bg-[#000000] overflow-hidden absolute w-full left-0 shadow-xl border-t border-[#C9A032] max-h-[85vh] overflow-y-auto"
+            className="xl:hidden bg-[#005e85] overflow-hidden absolute w-full left-0 shadow-xl border-t border-[#007ead]"
           >
             <div className="px-4 pt-4 pb-6 space-y-2">
               <MobileNavLink href="#">About Us</MobileNavLink>
-              
-              {/* Expandable Mobile Dropdowns */}
-              <MobileDropdown title="Services" items={servicesItems} />
-              <MobileDropdown title="Sectors" items={sectorsItems} />
-              
+              <MobileNavLink href="#" hasDropdown>Services</MobileNavLink>
+              <MobileNavLink href="#" hasDropdown>Sectors</MobileNavLink>
               <MobileNavLink href="#">Investors</MobileNavLink>
               <MobileNavLink href="#">CSR</MobileNavLink>
               <MobileNavLink href="#">Blogs</MobileNavLink>
@@ -113,7 +110,7 @@ const Navbar = () => {
               <div className="pt-6 pb-8">
                 <a
                   href="#"
-                  className="block w-full text-center bg-[#1B1B1B] hover:bg-[#C9A032] text-white px-4 py-3 rounded-md font-bold text-lg transition-colors"
+                  className="block w-full text-center bg-[#009FE3] text-white px-4 py-3 rounded-md font-bold text-lg"
                 >
                   Contact Us
                 </a>

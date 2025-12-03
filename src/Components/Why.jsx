@@ -1,70 +1,83 @@
-import React from 'react';
-import { PieChart, Boxes, Database, Wallet } from 'lucide-react';
+import React from "react";
+import { PieChart, Boxes, Database, Wallet } from "lucide-react";
 
 const WhyKrystalSection = () => {
   const colors = {
-    bg: '#009fe3',
-    dark: '#002a54',
-    text: '#ffffff',
+    bg: "#000000",
+    dark: "#C9A032",
+    text: "#FFFFFF",
   };
 
   const features = [
     {
       icon: <PieChart size={64} strokeWidth={1.5} color={colors.dark} />,
-      title: "Comprehensive, Integrated Approach",
-      description: "We connect frontline teams to strategic objectives, fostering collaboration, operational excellence, and sustainability accountability across every level."
+      title: "Professionally trained and fully verified staff",
+      description:
+        "We connect frontline teams to strategic objectives, fostering collaboration, operational excellence, and sustainability accountability across every level.",
     },
     {
       icon: <Boxes size={64} strokeWidth={1.5} color={colors.dark} />,
-      title: "Tailored Solutions with Sector-Specific Impact",
-      description: "Recognizing the unique demands of each sector, we craft customized service packages that address operational, compliance, and sustainability goals—delivering measurable, impactful results"
+      title: "Strong supervision and on-site monitoring",
+      description:
+        "Recognizing the unique demands of each sector, we craft customized service packages that address operational, compliance, and sustainability goals—delivering measurable, impactful results",
     },
     {
       icon: <Database size={64} strokeWidth={1.5} color={colors.dark} />,
-      title: "Proven Expertise in Critical Environments",
-      description: "From healthcare to aviation and commercial spaces, our expert professionals and agile leadership bring deep domain knowledge combined with industry best practices for operational excellence"
+      title: "Quick response and emergency-ready teams",
+      description:
+        "From healthcare to aviation and commercial spaces, our expert professionals and agile leadership bring deep domain knowledge combined with industry best practices for operational excellence",
     },
     {
       icon: <Wallet size={64} strokeWidth={1.5} color={colors.dark} />,
-      title: "Smart Cost Optimization",
-      description: "Through strategic resource planning, vendor management, and tech-driven workflows, we optimize costs while upholding quality, and compliance standards"
-    }
+      title: "Tailored solutions for every industry",
+      description:
+        "Through strategic resource planning, vendor management, and tech-driven workflows, we optimize costs while upholding quality, and compliance standards",
+    },
   ];
 
   return (
-    <div 
+    <div
       className="w-full py-16 px-4 md:px-8 lg:px-16 flex flex-col justify-center items-center font-sans"
       style={{ backgroundColor: colors.bg }}
     >
       <div className="max-w-7xl w-full">
         <div className="mb-8 text-left">
-          <h2 className="text-4xl md:text-5xl font-bold mb-2" style={{ color: colors.text }}>
-            Why Krystal
+          <h2
+            className="text-4xl md:text-5xl font-bold mb-2"
+            style={{ color: colors.text }}
+          >
+            Why Kesari
           </h2>
-          <p className="text-lg md:text-xl font-medium opacity-95" style={{ color: colors.text }}>
-            Partnering for Performance. Driven by Innovation, Built on Trust.
+          <p
+            className="text-lg md:text-xl font-medium opacity-95"
+            style={{ color: colors.text }}
+          >
+            Security You Can Trust. Service You Can Rely On.
           </p>
         </div>
 
-        <div className="border border-solid" style={{ borderColor: colors.dark }}>
+        <div
+          className="border border-solid"
+          style={{ borderColor: colors.dark }}
+        >
           <div className="grid grid-cols-1 md:grid-cols-2">
             {features.map((feature, index) => {
               const isLast = index === features.length - 1;
               const isSecondLast = index === features.length - 2;
-              
+
               let borderClasses = "";
               if (!isLast) borderClasses += "border-b ";
               if (index % 2 === 0) borderClasses += "md:border-r ";
               if (index < 2) {
-                borderClasses += "md:border-b "; 
+                borderClasses += "md:border-b ";
               } else {
                 if (index === 2) borderClasses += "md:border-b-0 ";
               }
               if (isLast) borderClasses = "";
 
               return (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className={`flex flex-col md:flex-row items-start p-8 md:p-10 ${borderClasses}`}
                   style={{ borderColor: colors.dark }}
                 >
@@ -72,10 +85,16 @@ const WhyKrystalSection = () => {
                     {feature.icon}
                   </div>
                   <div>
-                    <h3 className="text-xl md:text-2xl font-bold mb-3" style={{ color: colors.text }}>
+                    <h3
+                      className="text-xl md:text-2xl font-bold mb-3"
+                      style={{ color: colors.text }}
+                    >
                       {feature.title}
                     </h3>
-                    <p className="text-base md:text-[17px] leading-relaxed opacity-95" style={{ color: colors.text }}>
+                    <p
+                      className="text-base md:text-[17px] leading-relaxed opacity-95"
+                      style={{ color: colors.text }}
+                    >
                       {feature.description}
                     </p>
                   </div>
@@ -86,11 +105,11 @@ const WhyKrystalSection = () => {
         </div>
 
         <div className="mt-10 flex justify-center">
-          <button 
-            className="px-8 py-3 text-lg font-medium transition-colors duration-300 hover:bg-opacity-10 hover:bg-black"
-            style={{ 
-              border: `2px solid ${colors.dark}`, 
-              color: colors.dark 
+          <button
+            className="px-8 py-3 text-lg font-medium transition-colors duration-300 hover:bg-opacity-10 hover:bg-[#1B1B1B]"
+            style={{
+              border: `2px solid ${colors.dark}`,
+              color: colors.dark,
             }}
           >
             View more

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
-const SLIDE_DURATION = 6000;
+const SLIDE_DURATION = 5000;
 
 const SLIDES = [
   {
@@ -26,7 +26,7 @@ const SLIDES = [
 const DiamondGrid = ({ images }) => {
   return (
     <div className="absolute top-1/2 right-[-60%] sm:right-[-50%] md:right-[-25%] lg:right-[-10%] xl:right-0 transform -translate-y-1/2 translate-x-[20%] md:translate-x-[10%] rotate-45 w-[40vh] h-[40vh] sm:w-[60vh] sm:h-[60vh] md:w-[85vh] md:h-[85vh] lg:w-[110vh] lg:h-[110vh] z-0 transition-transform duration-1000">
-      <div className="grid grid-cols-2 gap-2 md:gap-4 w-full h-full p-2 md:p-4 bg-[#002840]/50 backdrop-blur-sm rounded-lg shadow-2xl">
+      <div className="grid grid-cols-2 gap-2 md:gap-4 w-full h-full p-2 md:p-4 bg-[#1B1B1B]/50 backdrop-blur-sm rounded-lg shadow-2xl">
         {images.map((src, index) => (
           <div
             key={index}
@@ -38,7 +38,7 @@ const DiamondGrid = ({ images }) => {
                 alt={`Grid element ${index}`}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-[#002840]/20 mix-blend-multiply" />
+              <div className="absolute inset-0 bg-[#000000]/20 mix-blend-multiply" />
             </div>
           </div>
         ))}
@@ -57,7 +57,7 @@ const FullBackground = ({ image }) => (
       alt="Background"
       className="w-full h-full object-cover"
     />
-    <div className="absolute inset-0 bg-[#002840]/40 mix-blend-multiply" />
+    <div className="absolute inset-0 bg-[#000000]/40 mix-blend-multiply" />
   </div>
 );
 
@@ -72,7 +72,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-[600px] md:h-[700px] lg:h-[800px] bg-[#002840] overflow-hidden group">
+    <div className="relative w-full h-[600px] md:h-[700px] lg:h-[800px] bg-[#000000] overflow-hidden group">
       <AnimatePresence mode="wait">
         <motion.div
           key={SLIDES[currentSlide].id}
@@ -84,7 +84,7 @@ const Hero = () => {
         >
           {SLIDES[currentSlide].type === "grid" ? (
             <>
-              <div className="absolute inset-0 bg-[#002840]" />
+              <div className="absolute inset-0 bg-[#000000]" />
               <DiamondGrid images={SLIDES[currentSlide].images} />
             </>
           ) : (
@@ -93,7 +93,7 @@ const Hero = () => {
         </motion.div>
       </AnimatePresence>
 
-      <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#002840] via-[#002840]/90 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#000000] via-[#1B1B1B]/90 to-transparent pointer-events-none" />
 
       <div className="absolute inset-0 z-20 flex items-center">
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
@@ -106,11 +106,13 @@ const Hero = () => {
                 transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               >
                 <h1 className="whitespace-normal md:whitespace-nowrap text-[#FFC20E] text-3xl sm:text-5xl lg:text-5xl font-bold leading-tight mb-4 drop-shadow-lg tracking-tight">
-                  Strategic Scale. Sustainable Growth.
+                  Premium Security Solutions for a Safer Tomorrow
                 </h1>
 
-                <h2 className="text-white text-xl sm:text-3xl lg:text-5xl font-bold mb-8 drop-shadow-lg">
-                  Proven Leadership.
+                <h2 className="text-white text-xl sm:text-1xl lg:text-5xl font-bold mb-8 drop-shadow-lg">
+                  Professional guards, advanced protection systems, and
+                  end-to-end security services trusted by corporates,
+                  industries, and residential communities.
                 </h2>
 
                 <motion.button

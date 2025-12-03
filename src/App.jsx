@@ -12,7 +12,6 @@ import Hero from "./Components/Hero"
 
 function App() {
 
-// this is the main app
   return (
     <>
     <Navbar />

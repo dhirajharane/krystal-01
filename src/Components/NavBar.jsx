@@ -29,7 +29,7 @@ const Navbar = () => {
     <nav className="fixed w-full top-0 left-0 z-50 bg-[#000000] text-white shadow-lg font-sans">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
         <div className="flex justify-between items-center h-[90px]">
-          
+          {/* Logo Section */}
           <div className="flex-shrink-0 flex items-center cursor-pointer gap-3">
             <div className="relative w-12 h-12">
               <svg
@@ -56,7 +56,7 @@ const Navbar = () => {
             </span>
           </div>
 
-          
+          {/* Desktop Menu */}
           <div className="hidden xl:flex items-center space-x-8 h-full">
             <NavLink href="#">About Us</NavLink>
 
@@ -79,6 +79,7 @@ const Navbar = () => {
             </div>
           </div>
 
+          {/* Mobile Menu Toggle Button */}
           <div className="flex items-center xl:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -90,18 +91,22 @@ const Navbar = () => {
         </div>
       </div>
 
+      {/* Mobile Menu Container */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="xl:hidden bg-[#005e85] overflow-hidden absolute w-full left-0 shadow-xl border-t border-[#007ead]"
+            className="xl:hidden bg-[#000000] overflow-hidden absolute w-full left-0 shadow-xl border-t border-[#C9A032] max-h-[85vh] overflow-y-auto"
           >
             <div className="px-4 pt-4 pb-6 space-y-2">
               <MobileNavLink href="#">About Us</MobileNavLink>
-              <MobileNavLink href="#" hasDropdown>Services</MobileNavLink>
-              <MobileNavLink href="#" hasDropdown>Sectors</MobileNavLink>
+              
+              {/* Expandable Mobile Dropdowns */}
+              <MobileDropdown title="Services" items={servicesItems} />
+              <MobileDropdown title="Sectors" items={sectorsItems} />
+              
               <MobileNavLink href="#">Investors</MobileNavLink>
               <MobileNavLink href="#">CSR</MobileNavLink>
               <MobileNavLink href="#">Blogs</MobileNavLink>
@@ -110,7 +115,7 @@ const Navbar = () => {
               <div className="pt-6 pb-8">
                 <a
                   href="#"
-                  className="block w-full text-center bg-[#009FE3] text-white px-4 py-3 rounded-md font-bold text-lg"
+                  className="block w-full text-center bg-[#1B1B1B] hover:bg-[#C9A032] text-white px-4 py-3 rounded-md font-bold text-lg transition-colors"
                 >
                   Contact Us
                 </a>
@@ -123,7 +128,7 @@ const Navbar = () => {
   );
 };
 
-
+// --- Desktop Components (Unchanged) ---
 
 const NavLink = ({ href, children }) => (
   <div className="flex items-center h-full">
@@ -188,6 +193,7 @@ const DropdownLink = ({ href, title, items }) => {
   );
 };
 
+// --- Mobile Components ---
 
 const MobileNavLink = ({ href, children }) => (
   <a
@@ -198,6 +204,7 @@ const MobileNavLink = ({ href, children }) => (
   </a>
 );
 
+// New Component: Handles the Accordion style dropdown in Mobile
 const MobileDropdown = ({ title, items }) => {
   const [isOpen, setIsOpen] = useState(false);
 
